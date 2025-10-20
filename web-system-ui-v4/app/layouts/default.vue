@@ -1,13 +1,66 @@
-<template>
-  <div>
-    <slot />
-  </div>
++<template>
+  <v-app>
+<v-navigation-drawer v-model="drawer" permanent>
+  <v-list>
+    <v-list-item
+      prepend-avatar="https://randomuser.me/api/portraits/men/85.jpeg"
+      subtitle="rexsilvestre07@gmail.com"
+      title="SNC Student"
+    ></v-list-item>
+
+  </v-list>
+  <v-divider></v-divider>
+  <v-list density="compact" nav>
+
+    <v-list-item
+    prepend-icon="mdi-view-dashboard"
+    title="Dashboard"
+    value="myfiles"
+    ></v-list-item>
+
+    <v-list-item
+    prepend-icon="mdi-store"
+    title="Inventory"
+    value="shared"
+    to="/inventory"
+    ></v-list-item>
+
+    <v-list-item
+    prepend-icon="mdi-shape"
+    title="categories"
+    value="starred"
+    to="/categories"
+    ></v-list-item>
+
+    <v-list-item
+    prepend-icon="mdi-truck"
+    title="Suppliers"
+    value="starred"
+    to="/suppliers"
+    ></v-list-item>
+
+  </v-list>
+
+</v-navigation-drawer>
+      <v-app-bar elevation="1">
+        <template v-slot:prepend>
+          <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        </template>
+        <v-app-bar-title>Application Bar</v-app-bar-title>
+      </v-app-bar>
+
+      <v-main>
+        <v-container fluid>
+          <slot/>
+        </v-container>
+      </v-main>
+
+  </v-app>
 </template>
 
-<script lang="ts" setup>
-
+<script setup>
+const drawer = ref(false)
 </script>
 
 <style>
-
 </style>
